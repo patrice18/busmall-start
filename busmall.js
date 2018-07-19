@@ -1,7 +1,11 @@
-//creatinng an array that will store all the picture objects that I will create from the picture constructor
-
+//creatinng an variable that will have the value of an array to store all the picture objects that I will create from the picture constructor
 let pictureArray = [];
 console.log(pictureArray)
+//finding in htm elements to change its src attibute- giving it the random object.
+let elPicture1 = document.getElementById=('randomImage1')
+let elPicture2 = document.getElementById=('randomImage2')
+let elPicture3 = document.getElementById=('randomImage3')
+
 
 
 
@@ -37,4 +41,15 @@ let Pic19= new Pictures ('water-can','./Pictures/water-can.jpg', 'A picture of a
 let Pic20 = new Pictures ('wine-glass','./Pictures/wine-glass.jpg', 'A picture of a weird wine glass',0);
 
 //storing the object recently instantiated inside the picture array
-pictureArray.push(Pic1,Pic2,Pic3,Pic4,Pic5,Pic6,Pic7,Pic8);
+pictureArray.push(Pic1,Pic2,Pic3,Pic4,Pic5,Pic6,Pic7,Pic8,Pic9,Pic10,Pic11,Pic12,Pic13,Pic14,Pic15,Pic16,Pic17,Pic18,Pic19,Pic20);
+
+
+let selectRandomImage = function (){
+let randomIndex = Math.floor(Math.random() * pictureArray.length);
+console.log (randomIndex)
+let randomImage = pictureArray[randomIndex];
+elPicture1.src=randomImage.filePath
+console.log(elPicture1)
+console.log(randomImage)
+};
+selectRandomImage();

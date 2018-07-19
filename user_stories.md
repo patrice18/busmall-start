@@ -28,11 +28,14 @@ Technical Plan.
 
 2. Since I have many images, I will use my object constuctor and create new instances of these images in the object constructor.
 
-3. Since I have many object, I want to creat an array to hold each object that was just initated in step 2. 
+3. Since I have many objects/pictures, I want to creat an array to hold each object that was just instantiated in step 2. 
 
-4. I need to know the images path to add to my instantiation, so I need to have these images saved in my local repository. 
+5. I will store these instances in an array, because I want to be able to access random objects in this array. 
 
-I know it is good practice to put variables that I will use first on the top of my js file. What are some variables that I will need. I figure that as I go along, but I know these variables will be placed on top. 
+6. Since I want to select random objects/pictures at least 3 times, I know i will want to reuse the script/s that let me select a random pic.Since i want to reuse this scipt I know, that i must put that inside a variable. But if I will have more than one variable, I want to put that inside a function. There are two steps involved: 
+    a.  I first need to select a radom number and use that as an index 
+    b. once this variable is created, i will use it as an idex to randomly select a picture array, attaching that index, which is randomly selected, to the array
+      
 
 
     
