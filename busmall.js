@@ -50,19 +50,18 @@ let Pic20 = new Pictures ('wine-glass','./Pictures/wine-glass.jpg', 'A picture o
 pictureArray.push(Pic1,Pic2,Pic3,Pic4,Pic5,Pic6,Pic7,Pic8,Pic9,Pic10,Pic11,Pic12,Pic13,Pic14,Pic15,Pic16,Pic17,Pic18,Pic19,Pic20);
 
 
-
 //function for having the first image appearing
 let selectRandomImage1 = function (){
 let randomIndex = Math.floor(Math.random() * pictureArray.length);
 console.log (randomIndex)
- randomImage1 = pictureArray[randomIndex];
+randomImage1 = pictureArray[randomIndex];
 elPicture1.src=randomImage1.filePath 
 console.log(elPicture1.src)
 console.log(randomImage1)
 };
 selectRandomImage1();
 
-let allImages = function() {
+
 //function for having the second image appearing
 let selectRandomImage2 = function (){
     let randomIndex = Math.floor(Math.random() * pictureArray.length);
@@ -71,7 +70,7 @@ let selectRandomImage2 = function (){
     randomImage2 = pictureArray[randomIndex];
     elPicture2.src=randomImage2.filePath
     };
-    selectRandomImage2();
+selectRandomImage2();
 
 
 //function for having the third image appearing
@@ -85,19 +84,28 @@ let selectRandomImage3 = function (){
     console.log(randomImage3)
     };
     selectRandomImage3();
-};
+
     //creating a variable that concatenate all 3 function expressions
     
 
-   /*// creating a  event handler that calculates how many times the first picture is clicked
-    let firstPicCount = function(e) {
+   // creating a  event handler that calculates how many times the first picture is clicked
+    let allImages1 = function(e) {
         randomImage1.click += 1
-        console.log(randomImage1.click)
+        console.log("ranImg1: " + randomImage1.click)
+    }
 
-    }*/
+    let allImages2 = function(e) {
+        randomImage2.click += 1
+        console.log("ranImg2: " + randomImage2.click)
+    }
 
+    let allImages3 = function(e) {
+        randomImage3.click += 1
+        console.log("ranImg3: " + randomImage3.click)
+    }
+    
     //attaching eventlistener to picture tag
-    elPicture1.addEventListener('click', allImages);
-    elPicture2.addEventListener('click', allImages);
-    elPicture3.addEventListener('click', allImages);
+    elPicture1.addEventListener('click', allImages1);
+    elPicture2.addEventListener('click', allImages2);
+    elPicture3.addEventListener('click', allImages3);
     
