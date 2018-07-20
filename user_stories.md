@@ -35,6 +35,12 @@ Technical Plan.
 6. Since I want to select random objects/pictures at least 3 times, I know i will want to reuse the script/s that let me select a random pic.Since i want to reuse this scipt I know, that i must put that inside a variable. But if I will have more than one variable, I want to put that inside a function. There are two steps involved: 
     a.  I first need to select a radom number and use that as an index 
     b. once this variable is created, i will use it as an idex to randomly select a picture array, attaching that index, which is randomly selected, to the array
+
+7. So I have now threee images I want to populate, when I put all three images ID inside one function I get a the same three pictures appear on the screen. To get around that, i create 3 different functions, each function with its own picture file path, not all three picture file path in one function. There is a way to reduce this code but I will come back to it after. 
+
+8. Now that I have three images, I want to be able to register an event ( when ever the user those something). That event is when the user choose an image.  I call call that event "click"
+
+
       
 
 
