@@ -11,6 +11,11 @@ let randomImage1;
 let randomImage2;
 let randomImage3;
 
+//declaring variables outside function to have global access
+let randomIndex1;
+let randomIndex2;
+let randomIndex3;
+
 
 
 
@@ -26,7 +31,6 @@ let Pictures = function(name, filePath, alt, click) {
 
 let Pic1 = new Pictures ('bag','./Pictures/bag.jpg', 'A picture of a bag', 0);
 let Pic2 = new Pictures ('banana', './Pictures/banana.jpg', 'A picture of a banana',0)
-console.log(Pic2)
 let Pic3 = new Pictures ('bathroom','./Pictures/bathroom.jpg', 'A picture of a bathroom',0);
 let Pic4 = new Pictures ('boots','./Pictures/boots.jpg', 'A picture of boots',0);
 let Pic5 = new Pictures ('breakfast','./Pictures/breakfast.jpg', 'A picture of a breakfast',0);
@@ -49,59 +53,71 @@ let Pic20 = new Pictures ('wine-glass','./Pictures/wine-glass.jpg', 'A picture o
 //storing the object recently instantiated inside the picture array
 pictureArray.push(Pic1,Pic2,Pic3,Pic4,Pic5,Pic6,Pic7,Pic8,Pic9,Pic10,Pic11,Pic12,Pic13,Pic14,Pic15,Pic16,Pic17,Pic18,Pic19,Pic20);
 
+//creating while loop to have index be different everytime. 
+let randomNumber = function() {
+    randomIndex1=0;
+    randomIndex2=0;
+    randomIndex3=0;
+
+    while (randomIndex1===randomIndex2 || randomIndex1===randomImage3 || randomIndex3 === randomIndex2) {
+        randomIndex1 = Math.floor(Math.random() * pictureArray.length);
+        randomIndex2 = Math.floor(Math.random() * pictureArray.length);
+        randomIndex3 = Math.floor(Math.random() * pictureArray.length);
+    }
+}
+
 
 //function for having the first image appearing
 let selectRandomImage1 = function (){
-let randomIndex = Math.floor(Math.random() * pictureArray.length);
-console.log (randomIndex)
-randomImage1 = pictureArray[randomIndex];
-elPicture1.src=randomImage1.filePath 
-console.log(elPicture1.src)
-console.log(randomImage1)
+    randomNumber();
+    randomImage1 = pictureArray[randomIndex1];
+    elPicture1.src=randomImage1.filePath 
 };
 selectRandomImage1();
 
 
 //function for having the second image appearing
 let selectRandomImage2 = function (){
-    let randomIndex = Math.floor(Math.random() * pictureArray.length);
-    console.log (randomIndex)
-    //adding to the random index so that it is different number for the two other images
-    randomImage2 = pictureArray[randomIndex];
+    randomNumber()
+    randomImage2 = pictureArray[randomIndex2];
     elPicture2.src=randomImage2.filePath
-    };
+};
 selectRandomImage2();
 
 
 //function for having the third image appearing
 let selectRandomImage3 = function (){
-    let randomIndex = Math.floor(Math.random() * pictureArray.length);
-    console.log (randomIndex)
-    //adding to the random index so that it is different number for the two other images
-    randomImage3 = pictureArray[randomIndex];
+    randomNumber()
+    randomImage3 = pictureArray[randomIndex3];
     elPicture3.src=randomImage3.filePath
-    console.log(elPicture3.src)
-    console.log(randomImage3)
     };
     selectRandomImage3();
 
-    //creating a variable that concatenate all 3 function expressions
     
 
    // creating a  event handler that calculates how many times the first picture is clicked
     let allImages1 = function(e) {
         randomImage1.click += 1
         console.log("ranImg1: " + randomImage1.click)
+        selectRandomImage1();
+        selectRandomImage2();
+        selectRandomImage3();
     }
 
     let allImages2 = function(e) {
         randomImage2.click += 1
         console.log("ranImg2: " + randomImage2.click)
+        selectRandomImage1();
+        selectRandomImage2();
+        selectRandomImage3();
     }
 
     let allImages3 = function(e) {
         randomImage3.click += 1
         console.log("ranImg3: " + randomImage3.click)
+        selectRandomImage1();
+        selectRandomImage2();
+        selectRandomImage3();
     }
     
     //attaching eventlistener to picture tag
