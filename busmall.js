@@ -128,14 +128,17 @@ let barChart= function (){
                 backgroundColor: 'rgb(255, 99, 130)',
                     borderColor: 'rgb(255, 99, 130)',
                 data: [Pic1.click,Pic2.click,Pic3.click,Pic4.click,Pic5.click,Pic6.click,Pic7.click,Pic8.click,Pic9.click,Pic10.click,Pic11.click,Pic12.click,Pic13.click,Pic14.click,Pic15.click,Pic16.click,Pic17.click,Pic18.click,Pic19.click,Pic20.click,],
-                
-                datasets:[{
-                    label: '# of Clicks',
-                    backgroundColor: 'rgb(255, 99, 130)',
-                        borderColor: 'rgb(255, 99, 130)',
-                    data: [Pic1.click,Pic2.click,Pic3.click,Pic4.click,Pic5.click,Pic6.click,Pic7.click,Pic8.click,Pic9.click,Pic10.click,Pic11.click,Pic12.click,Pic13.click,Pic14.click,Pic15.click,Pic16.click,Pic17.click,Pic18.click,Pic19.click,Pic20.click,],
-
-            ]}]}})};
+            },
+               {
+                    label: '# of times displayed',
+                    backgroundColor:'rgb(122, 23, 23)',
+                    borderColor: 'rgb(122, 23, 23)',  
+                data: [Pic1.shown,Pic2.shown,Pic3.shown,Pic4.shown,Pic5.shown,Pic6.shown,Pic7.shown,Pic8.shown,Pic9.shown,Pic10.shown,Pic11.shown,Pic12.shown,Pic13.shown,Pic14.shown,Pic15.shown,Pic16.shown,Pic17.shown,Pic18.shown,Pic19.shown,Pic20.shown,],
+                } 
+            ]
+    }
+})
+};
 
 
 
