@@ -58,7 +58,7 @@ let Pic20 = new Pictures ('wine-glass','./Pictures/wine-glass.jpg', 'A picture o
 pictureArray.push(Pic1,Pic2,Pic3,Pic4,Pic5,Pic6,Pic7,Pic8,Pic9,Pic10,Pic11,Pic12,Pic13,Pic14,Pic15,Pic16,Pic17,Pic18,Pic19,Pic20);
 
 
-/*//creating while loop to have index be different everytime. 
+//creating while loop to have index be different everytime. 
 let randomNumber = function() {
     randomIndex1=0;
     randomIndex2=0;
@@ -69,9 +69,9 @@ let randomNumber = function() {
         randomIndex2 = Math.floor(Math.random() * pictureArray.length);
         randomIndex3 = Math.floor(Math.random() * pictureArray.length);
     }
-} */
+} 
 
-let randomNumber =  function() {
+/*let randomNumber =  function() {
     randomIndex1= Math.floor(Math.random() * pictureArray.length);
     randomIndex2= Math.floor(Math.random() * pictureArray.length);
     randomIndex3= Math.floor(Math.random() * pictureArray.length);
@@ -81,6 +81,7 @@ let randomNumber =  function() {
     randomIndex2 = pictureArray.length - randomIndex2;
     randomIndex3 = pictureArray.length - randomIndex2;
 }
+*/
 
 //function for having the first image appearing
 let selectRandomImage1 = function (){
@@ -113,6 +114,30 @@ let selectRandomImage3 = function (){
     selectRandomImage3();
 
     
+//creating a function that will store my bar chart representing the number of times a picture is clicked and the number of times a picutre is shown
+let barChart= function (){
+    let canvas = document.getElementById("myChart")
+    let ctx = canvas.getContext("2d");
+    
+    let myBarChart = new Chart (ctx,{
+        type: 'bar',
+        data: { 
+            labels:[Pic1.name,Pic2.name,Pic3.name,Pic4.name,Pic5.name,Pic6.name,Pic7.name,Pic8.name,Pic9.name,Pic10.name,Pic11.name,Pic12.name,Pic13.name,Pic14.name,Pic15.name,Pic16.name,Pic17.name,Pic18.name,Pic19.name,Pic20.name,],
+            datasets:[{
+                label: '# of Clicks',
+                backgroundColor: 'rgb(255, 99, 130)',
+                    borderColor: 'rgb(255, 99, 130)',
+                data: [Pic1.click,Pic2.click,Pic3.click,Pic4.click,Pic5.click,Pic6.click,Pic7.click,Pic8.click,Pic9.click,Pic10.click,Pic11.click,Pic12.click,Pic13.click,Pic14.click,Pic15.click,Pic16.click,Pic17.click,Pic18.click,Pic19.click,Pic20.click,],
+                
+                datasets:[{
+                    label: '# of Clicks',
+                    backgroundColor: 'rgb(255, 99, 130)',
+                        borderColor: 'rgb(255, 99, 130)',
+                    data: [Pic1.click,Pic2.click,Pic3.click,Pic4.click,Pic5.click,Pic6.click,Pic7.click,Pic8.click,Pic9.click,Pic10.click,Pic11.click,Pic12.click,Pic13.click,Pic14.click,Pic15.click,Pic16.click,Pic17.click,Pic18.click,Pic19.click,Pic20.click,],
+
+            ]}]}})};
+
+
 
    // creating a  event handler that calculates how many times the first picture is clicked
     let allImages1 = function(e) {
@@ -120,6 +145,7 @@ let selectRandomImage3 = function (){
         selectRandomImage1();
         selectRandomImage2();
         selectRandomImage3();
+        barChart();
     }
 
     let allImages2 = function(e) {
@@ -127,6 +153,7 @@ let selectRandomImage3 = function (){
         selectRandomImage1();
         selectRandomImage2();
         selectRandomImage3();
+        barChart();
     }
 
     let allImages3 = function(e) {
@@ -134,17 +161,35 @@ let selectRandomImage3 = function (){
         selectRandomImage1();
         selectRandomImage2();
         selectRandomImage3();
+        barChart();
     }
     
     //attaching eventlistener to picture tag
-    elPicture1.addEventListener('click', allImages1);
+    elPicture1.addEventListener('click',allImages1);
     elPicture2.addEventListener('click', allImages2);
     elPicture3.addEventListener('click', allImages3);
 
-
+//practicing how array works real quick for the next exercise
  xArray=['p','t','u']
 for (let i =0; i<xArray.length;i++) {
     console.log(xArray[i])
 }
 
-   
+/* start back from here
+// checking for 25 clicks
+let click = 0
+
+let clickVerification =function () {
+for(let i=0;i<pictureArray.length;i++){
+     console.log(pictureArray[i].click)
+    
+}
+//this needs to be put inside a function
+if (clickVerification >= allClicks) {
+    let message = alert('Thank you for your time. The analysis is now complete')
+}};
+clickVerification()
+console.log(pictureArray[i])
+
+*/ 
+
