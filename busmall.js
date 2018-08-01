@@ -1,6 +1,7 @@
 //creatinng a variable that will have the value of an array to store all the picture objects that I will create from the picture constructor
 let pictureArray = [];
 console.log(pictureArray)
+
 //finding in htm elements to change its src attibute- giving it the random object.
 let elPicture1 = document.getElementById('randomImage1')
 let elPicture2 = document.getElementById('randomImage2')
@@ -22,7 +23,7 @@ let timesShown;
 
 
 
-//crate an object constructor to facilitate soring each image as an object with properties i can access
+//crate an object constructor to facilitate storing each image as an object with properties i can access
 let Pictures = function(name, filePath, alt,shown, click) { 
     this.name = name; 
     this.filePath = filePath;
@@ -31,8 +32,12 @@ let Pictures = function(name, filePath, alt,shown, click) {
     this.click = click; 
 };
 
-//istantiating picture objects for each image using the object constructor above and pushing into my array
+//checking if data is stored in local storage, then JSON.parse so it reflects in JS/the dom
+if(localStorage.picArray) {
+   pictureArray = JSON.parse(localStorage.getItem("picArray"))
+ } else {
 
+//istantiating new picture objects for each image using the object constructor above and pushing into my array
 let Pic1 = new Pictures ('bag','./Pictures/bag.jpg', 'A picture of a bag',0, 0);
 let Pic2 = new Pictures ('banana', './Pictures/banana.jpg', 'A picture of a banana',0,0)
 let Pic3 = new Pictures ('bathroom','./Pictures/bathroom.jpg', 'A picture of a bathroom',0,0);
@@ -56,7 +61,7 @@ let Pic20 = new Pictures ('wine-glass','./Pictures/wine-glass.jpg', 'A picture o
 
 //storing the object recently instantiated inside the picture array
 pictureArray.push(Pic1,Pic2,Pic3,Pic4,Pic5,Pic6,Pic7,Pic8,Pic9,Pic10,Pic11,Pic12,Pic13,Pic14,Pic15,Pic16,Pic17,Pic18,Pic19,Pic20);
-
+ }
 
 //creating while loop to have index be different everytime. 
 let randomNumber = function() {
@@ -113,8 +118,19 @@ let selectRandomImage3 = function (){
     };
     selectRandomImage3();
 
+
+
+  //creating function that will loop through the picture array to access specific properties that will be used as labels for the chart
+   function populateChart(props){
+       console.log(pictureArray)
+       let labels = []
+    for(i=0; i<pictureArray.length;i++){
+     labels.push(pictureArray[i][props])
+    }
+    return labels;
+  } 
     
-//creating a function that will store my bar chart representing the number of times a picture is clicked and the number of times a picutre is shown
+//creating a function when invoked will create a bar chart representing the number of times a picture is clicked and the number of times a picutre was shown/displayed
 let barChart= function (){
     let canvas = document.getElementById("myChart")
     let ctx = canvas.getContext("2d");
@@ -122,32 +138,44 @@ let barChart= function (){
     let myBarChart = new Chart (ctx,{
         type: 'bar',
         data: { 
-            labels:[Pic1.name,Pic2.name,Pic3.name,Pic4.name,Pic5.name,Pic6.name,Pic7.name,Pic8.name,Pic9.name,Pic10.name,Pic11.name,Pic12.name,Pic13.name,Pic14.name,Pic15.name,Pic16.name,Pic17.name,Pic18.name,Pic19.name,Pic20.name,],
+            labels:populateChart('name'),
             datasets:[{
                 label: '# of Clicks',
                 backgroundColor: 'rgb(255, 99, 130)',
                     borderColor: 'rgb(255, 99, 130)',
-                data: [Pic1.click,Pic2.click,Pic3.click,Pic4.click,Pic5.click,Pic6.click,Pic7.click,Pic8.click,Pic9.click,Pic10.click,Pic11.click,Pic12.click,Pic13.click,Pic14.click,Pic15.click,Pic16.click,Pic17.click,Pic18.click,Pic19.click,Pic20.click,],
+                data: populateChart('click')
             },
                {
                     label: '# of times displayed',
                     backgroundColor:'rgb(122, 23, 23)',
                     borderColor: 'rgb(122, 23, 23)',  
-                data: [Pic1.shown,Pic2.shown,Pic3.shown,Pic4.shown,Pic5.shown,Pic6.shown,Pic7.shown,Pic8.shown,Pic9.shown,Pic10.shown,Pic11.shown,Pic12.shown,Pic13.shown,Pic14.shown,Pic15.shown,Pic16.shown,Pic17.shown,Pic18.shown,Pic19.shown,Pic20.shown,],
-                } 
+                data: populateChart('shown')
+               }
             ]
     }
 })
 };
 
+// //Giving the data gathered so far some persistence by storing the voting data to local storage
+// // console.logging picture array to see what it gives
+// localStorage.setItem('picArray',pictureArray);
+// console.log(localStorage.picArray)
+// //first sending array of objects to local storage by stringifying it, this way localstorage can understand it
+// localStorage.setItem ('picArray', JSON.stringify (pictureArray))
+// console.log('Stringified', localStorage.picArray)
+// //sending localStorage data into JS form 
+// PictureArray = JSON.parse(localStorage.getItem("picArray"))
+// console.log(PictureArray)
 
 
-   // creating a  event handler that calculates how many times the first picture is clicked
+   // creating a  event handler that when the event is fired will calculates how many times  pictures are clicked and shown and displaying the results in a bar chart
     let allImages1 = function(e) {
         randomImage1.click += 1
         selectRandomImage1();
         selectRandomImage2();
         selectRandomImage3();
+        localStorage.setItem ('picArray', JSON.stringify(pictureArray))
+        console.log(localStorage.picArray)
         barChart();
     }
 
@@ -156,6 +184,8 @@ let barChart= function (){
         selectRandomImage1();
         selectRandomImage2();
         selectRandomImage3();
+        localStorage.setItem ('picArray', JSON.stringify (pictureArray))
+        console.log(localStorage.picArray)
         barChart();
     }
 
@@ -164,19 +194,23 @@ let barChart= function (){
         selectRandomImage1();
         selectRandomImage2();
         selectRandomImage3();
+        localStorage.setItem ('picArray', JSON.stringify (pictureArray))
+        console.log(localStorage.picArray)
         barChart();
     }
     
-    //attaching eventlistener to picture tag
-    elPicture1.addEventListener('click',allImages1);
+    //attaching eventlistener to picture tag, firing the event
+    elPicture1.addEventListener('click', allImages1);
     elPicture2.addEventListener('click', allImages2);
     elPicture3.addEventListener('click', allImages3);
 
+
+
 //practicing how array works real quick for the next exercise
- xArray=['p','t','u']
-for (let i =0; i<xArray.length;i++) {
-    console.log(xArray[i])
-}
+// xArray=['p','t','u']
+//for (let i =0; i<xArray.length;i++) {
+  //  console.log(xArray[i])
+//}
 
 /* start back from here
 // checking for 25 clicks
@@ -196,3 +230,5 @@ console.log(pictureArray[i])
 
 */ 
 
+
+//Now I need these data to be stored in the event handler, so when I click a picture, the properties that is increased by 1 is also stored in local storage
