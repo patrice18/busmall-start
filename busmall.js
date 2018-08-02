@@ -122,7 +122,6 @@ let selectRandomImage3 = function (){
 
   //creating function that will loop through the picture array to access specific properties that will be used as labels for the chart
    function populateChart(props){
-       console.log(pictureArray)
        let labels = []
     for(i=0; i<pictureArray.length;i++){
      labels.push(pictureArray[i][props])
@@ -167,6 +166,17 @@ let barChart= function (){
 // PictureArray = JSON.parse(localStorage.getItem("picArray"))
 // console.log(PictureArray)
 
+// // checking for 25 clicks
+let xClick = 0
+
+let clickVerification =function() {
+    xClick+=1 
+    if (xClick>=25){
+    barChart()
+    }
+
+}
+
 
    // creating a  event handler that when the event is fired will calculates how many times  pictures are clicked and shown and displaying the results in a bar chart
     let allImages1 = function(e) {
@@ -176,7 +186,7 @@ let barChart= function (){
         selectRandomImage3();
         localStorage.setItem ('picArray', JSON.stringify(pictureArray))
         console.log(localStorage.picArray)
-        barChart();
+        clickVerification()
     }
 
     let allImages2 = function(e) {
@@ -186,7 +196,8 @@ let barChart= function (){
         selectRandomImage3();
         localStorage.setItem ('picArray', JSON.stringify (pictureArray))
         console.log(localStorage.picArray)
-        barChart();
+        clickVerification()
+
     }
 
     let allImages3 = function(e) {
@@ -196,39 +207,11 @@ let barChart= function (){
         selectRandomImage3();
         localStorage.setItem ('picArray', JSON.stringify (pictureArray))
         console.log(localStorage.picArray)
-        barChart();
+        clickVerification()
+
     }
     
     //attaching eventlistener to picture tag, firing the event
     elPicture1.addEventListener('click', allImages1);
     elPicture2.addEventListener('click', allImages2);
-    elPicture3.addEventListener('click', allImages3);
-
-
-
-//practicing how array works real quick for the next exercise
-// xArray=['p','t','u']
-//for (let i =0; i<xArray.length;i++) {
-  //  console.log(xArray[i])
-//}
-
-/* start back from here
-// checking for 25 clicks
-let click = 0
-
-let clickVerification =function () {
-for(let i=0;i<pictureArray.length;i++){
-     console.log(pictureArray[i].click)
-    
-}
-//this needs to be put inside a function
-if (clickVerification >= allClicks) {
-    let message = alert('Thank you for your time. The analysis is now complete')
-}};
-clickVerification()
-console.log(pictureArray[i])
-
-*/ 
-
-
-//Now I need these data to be stored in the event handler, so when I click a picture, the properties that is increased by 1 is also stored in local storage
+    elPicture3.addEventListener('click', allImages3);   
