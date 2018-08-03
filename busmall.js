@@ -166,12 +166,21 @@ let barChart= function (){
 // PictureArray = JSON.parse(localStorage.getItem("picArray"))
 // console.log(PictureArray)
 
-// // checking for 25 clicks
+// // checking for 25 clicks. Each time the function runs my counter variable increases by one, and this function will run everytime the event click is fired so this function needs to be in my event handler. 
 let xClick = 0
 
 let clickVerification =function() {
     xClick+=1 
-    if (xClick>=25){
+    if (xClick>=25){ 
+
+        elPicture1.removeEventListener('click', allImages1);
+        elPicture2.removeEventListener('click', allImages2);
+        elPicture3.removeEventListener('click', allImages3);   
+    
+    
+        elPicture1.className = "disabled";
+        elPicture2.className = "disabled";
+        elPicture3.className = "disabled";   
     barChart()
     }
 
@@ -215,3 +224,5 @@ let clickVerification =function() {
     elPicture1.addEventListener('click', allImages1);
     elPicture2.addEventListener('click', allImages2);
     elPicture3.addEventListener('click', allImages3);   
+
+    
