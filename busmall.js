@@ -65,19 +65,28 @@ pictureArray.push(Pic1,Pic2,Pic3,Pic4,Pic5,Pic6,Pic7,Pic8,Pic9,Pic10,Pic11,Pic12
 
 //creating while loop to have index be different everytime. 
 let randomNumber = function() {
-    randomIndex1=Math.floor(Math.random() * pictureArray.length);
-    randomIndex2=Math.floor(Math.random() * pictureArray.length);
-    randomIndex3=Math.floor(Math.random() * pictureArray.length);
+    
 //thinking about it again, I am not sure this while loop gives us a number that is not the same- it gives us a random number but the random number may be the same,-- while it run this loop again? I got the same picture twice
-    while (randomIndex1===randomIndex2 || randomIndex1===randomIndex3 || randomIndex3 === randomIndex2) {
         randomIndex1 = Math.floor(Math.random() * pictureArray.length);
+        while(randomIndex1 == radomIndex2 || randomIndex1 == randomindex3 || randomIndex2 == radomIndex3) {
+            randomIndex1 = Math.floor(Math.random() * pictureArray.length);
+
+
+        }
+       
         randomIndex2 = Math.floor(Math.random() * pictureArray.length);
+       
         randomIndex3 = Math.floor(Math.random() * pictureArray.length);
-        console.log('test')
+      
+    // while (randomIndex1===randomIndex2 || randomIndex1===randomIndex3 || randomIndex3 === randomIndex2) {
+    //     randomIndex1 = Math.floor(Math.random() * pictureArray.length);
+    //     randomIndex2 = Math.floor(Math.random() * pictureArray.length);
+    //     randomIndex3 = Math.floor(Math.random() * pictureArray.length);
+    //     console.log('test')
         console.log(randomIndex1)
         console.log(randomIndex2)
         console.log(randomIndex3)
-    }
+    // }
 };
 
 /*let randomNumber =  function() {
