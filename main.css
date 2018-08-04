@@ -1,10 +1,18 @@
 h2 {
+    height: 66px;
+    padding: 25px;
     background: linear-gradient(black,white)
+    
+}
+
+header{
+    height: 100px;
 }
 
 
 img:not(.disabled):hover {
     border: 2px solid #564322;
+    
  }
 
  .disabled {
